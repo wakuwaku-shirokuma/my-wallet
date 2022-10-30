@@ -1,0 +1,34 @@
+version: '3'
+services:
+  postgres:
+    # Docker Image は postgres:12-alpine を使います。postgres:12-alpine は postgres:12 と比較して、イメージサイズが小さくなっています。
+    image: postgres:12-alpine
+    # コンテナの名前を指定します。
+    container_name: postgres
+    # 環境変数を設定します。
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=my-wallet
+    # データの永続化
+    volumes:
+      # postgresディレクトリを/var/lib/postgresql/dataにマウントする
+      - postgres:/var/lib/postgresql/data
+    # ポートの指定（HOST:CONTAINER）
+    ports:
+      - 5432:5432
+  # web:
+  rails :
+    container_name: rails
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+# データの永続化
+volumes:
+  postgres:

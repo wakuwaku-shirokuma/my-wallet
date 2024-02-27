@@ -10,7 +10,17 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div>
+    <%= form.label :year, style: "display: block" %>
+    <%= form.text_field :year %>
+  </div>
+  
+  <div>
+    <%= form.label :month, style: "display: block" %>
+    <%= form.text_field :month %>
+  </div>
+  
   <div>
     <%= form.label :category, style: "display: block" %>
     <%= form.text_field :category %>

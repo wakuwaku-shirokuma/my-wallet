@@ -26,3 +26,7 @@ Things you may want to cover:
 rails generate scaffold Income category:string amount:integer
 
 rails generate scaffold Expenditure category:string amount:integer
+
+rails generate migration AddDetailsToIncomes year:integer month:integer
+
+rails generate migration AddDetailsToExpenditures year:integer month:integer

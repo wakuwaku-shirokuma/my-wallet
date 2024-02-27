@@ -30,3 +30,5 @@ rails generate scaffold Expenditure category:string amount:integer
 rails generate migration AddDetailsToIncomes year:integer month:integer
 
 rails generate migration AddDetailsToExpenditures year:integer month:integer
+
+rails generate scaffold Balance year:integer month:integer income_id:integer expenditure_id:integer
